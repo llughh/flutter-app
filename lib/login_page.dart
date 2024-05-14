@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Bienvenido a la aplicación de login', // Texto introductorio
+                'DDirecta', // Texto introductorio
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.bold,
@@ -25,7 +26,11 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  // Lógica para iniciar sesión con Cl@ve
+                  // Navegar a la página Home al presionar el botón
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
                 },
                 child: Text('Iniciar sesión con Cl@ve'),
               ),
