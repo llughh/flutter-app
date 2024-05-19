@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:prueba/ley1.dart' as Ley1;// Importa tu Ley1 aquí
+import 'package:prueba/ley1.dart' as Ley1; // Importa tu Ley1 aquí
 import 'package:prueba/ley2.dart' as Ley2; // Importa tu Ley2 aquí
 import 'package:prueba/ley3.dart' as Ley3; // Importa tu Ley3 aquí
 import 'package:prueba/ley4.dart' as Ley4; // Importa tu Ley3 aquí
 import 'package:prueba/ley5.dart' as Ley5; // Importa tu Ley3 aquí
 import 'package:prueba/ley6.dart' as Ley6; // Importa tu Ley3 aquí
 import 'package:prueba/ley7.dart' as Ley7; // Importa tu Ley3 aquí
-
+import 'package:prueba/create_law.dart';
 
 import 'package:prueba/infoLegal.dart' as InformacionLegalPage;
 import 'package:share_plus/share_plus.dart';
@@ -25,34 +25,40 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> laws = [
     {
       'title': 'Ley de Protección Ambiental',
-      'description': 'Ley para la protección y conservación de los recursos naturales y la biodiversidad.'
+      'description':
+          'Ley para la protección y conservación de los recursos naturales y la biodiversidad.'
     },
     {
       'title': 'Ley de Igualdad de Género',
-      'description': 'Ley que promueve la igualdad de género en todos los ámbitos de la sociedad y prohíbe la discriminación por razón de sexo.'
+      'description':
+          'Ley que promueve la igualdad de género en todos los ámbitos de la sociedad y prohíbe la discriminación por razón de sexo.'
     },
     {
       'title': 'Ley de Seguridad Cibernética',
-      'description': 'Ley que establece medidas para proteger la infraestructura digital y los datos personales contra ataques cibernéticos.'
+      'description':
+          'Ley que establece medidas para proteger la infraestructura digital y los datos personales contra ataques cibernéticos.'
     },
     {
       'title': 'Ley de Reforma Educativa',
-      'description': 'Ley para la mejora del sistema educativo, enfocada en la actualización de los planes de estudio y la capacitación docente.'
+      'description':
+          'Ley para la mejora del sistema educativo, enfocada en la actualización de los planes de estudio y la capacitación docente.'
     },
     {
       'title': 'Ley de Energías Renovables',
-      'description': 'Ley que fomenta el desarrollo y uso de energías renovables para reducir la dependencia de combustibles fósiles y disminuir la huella de carbono.'
+      'description':
+          'Ley que fomenta el desarrollo y uso de energías renovables para reducir la dependencia de combustibles fósiles y disminuir la huella de carbono.'
     },
     {
       'title': 'Ley de Protección de Datos Personales',
-      'description': 'Ley que regula el tratamiento y protección de los datos personales para garantizar la privacidad de los ciudadanos.'
+      'description':
+          'Ley que regula el tratamiento y protección de los datos personales para garantizar la privacidad de los ciudadanos.'
     },
     {
       'title': 'Ley de Transparencia y Acceso a la Información Pública',
-      'description': 'Ley que garantiza el derecho de los ciudadanos a acceder a la información pública y promueve la transparencia gubernamental.'
+      'description':
+          'Ley que garantiza el derecho de los ciudadanos a acceder a la información pública y promueve la transparencia gubernamental.'
     },
   ];
-
 
   TextEditingController searchController = TextEditingController();
   List<Map<String, String>> filteredLaws = [];
@@ -127,15 +133,18 @@ class _HomePageState extends State<HomePage> {
               title: Text('Información Legal'),
               onTap: () {
                 Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => InformacionLegalPage.InformacionLegalPage()),
-                    );               },
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          InformacionLegalPage.InformacionLegalPage()),
+                );
+              },
             ),
             ListTile(
               title: Text('Proponer Ley'),
               onTap: () {
-                // Aquí puedes agregar la lógica para manejar la selección del ítem             
-                  },
+                // Aquí puedes agregar la lógica para manejar la selección del ítem
+              },
             ),
           ],
         ),
@@ -200,7 +209,8 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(
                                         builder: (context) => LeyDetailPage(
                                           title: filteredLaws[index]['title']!,
-                                          description: filteredLaws[index]['description']!,
+                                          description: filteredLaws[index]
+                                              ['description']!,
                                         ),
                                       ),
                                     );
@@ -211,7 +221,8 @@ class _HomePageState extends State<HomePage> {
                               IconButton(
                                 icon: Icon(Icons.share),
                                 onPressed: () {
-                                  Share.share('Consulta más sobre ${filteredLaws[index]['title']} en nuestra app!');
+                                  Share.share(
+                                      'Consulta más sobre ${filteredLaws[index]['title']} en nuestra app!');
                                 },
                               ),
                             ],
@@ -229,7 +240,10 @@ class _HomePageState extends State<HomePage> {
             right: 20.0,
             child: FloatingActionButton(
               onPressed: () {
-                // Lógica para ir a otra página
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateLawPage()),
+                );
               },
               child: Icon(Icons.add),
             ),
