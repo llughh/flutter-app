@@ -7,6 +7,7 @@ import 'package:prueba/ley5.dart' as Ley5; // Importa tu Ley3 aquí
 import 'package:prueba/ley6.dart' as Ley6; // Importa tu Ley3 aquí
 import 'package:prueba/ley7.dart' as Ley7; // Importa tu Ley3 aquí
 import 'package:prueba/create_law.dart';
+import 'package:prueba/about_us.dart';
 
 import 'package:prueba/infoLegal.dart' as InformacionLegalPage;
 import 'package:share_plus/share_plus.dart';
@@ -141,9 +142,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              title: Text('Proponer Ley'),
+              title: Text('About us'),
               onTap: () {
-                // Aquí puedes agregar la lógica para manejar la selección del ítem
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AboutUsScreen(),
+                  ),
+                );
               },
             ),
           ],
