@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prueba/home_page.dart';
+import 'package:prueba/success_screen.dart';
 
 class CreateLawPage extends StatefulWidget {
   @override
@@ -225,6 +226,13 @@ class _CreateLawPageState extends State<CreateLawPage> {
                       _localityController.clear();
                       _addressController.clear();
                       _requestController.clear();
+
+                      // Navegar a la pantalla de éxito
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SuccessScreen()),
+                      );
                     }
                   },
                   child: Text('Enviar Solicitud'),
