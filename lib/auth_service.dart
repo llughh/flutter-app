@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class AuthService {
-  final String claveUrl = 'URL_DEL_SERVICIO_CLAVE';
+  final String claveUrl = 'https://clave.gob.es/clave_Home/Clave-Permanente.html';
 
   Future<String> authenticateWithClave(String user, String password) async {
     try {

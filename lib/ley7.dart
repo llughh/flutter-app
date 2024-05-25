@@ -7,7 +7,7 @@ class Ley7 extends StatefulWidget {
 
 class _Ley7State extends State<Ley7> {
   bool hasVoted = false; // Estado para rastrear si el usuario ha votado
-  int voteCount = 0; // Contador de votos
+  int voteCount = 7090; // Contador de votos
 
   void vote() {
     if (!hasVoted) {
