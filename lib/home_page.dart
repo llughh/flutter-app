@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:prueba/ley1.dart' as Ley1; // Importa tu Ley1 aquí
 import 'package:prueba/ley2.dart' as Ley2; // Importa tu Ley2 aquí
 import 'package:prueba/ley3.dart' as Ley3; // Importa tu Ley3 aquí
-import 'package:prueba/ley4.dart' as Ley4; // Importa tu Ley3 aquí
-import 'package:prueba/ley5.dart' as Ley5; // Importa tu Ley3 aquí
-import 'package:prueba/ley6.dart' as Ley6; // Importa tu Ley3 aquí
-import 'package:prueba/ley7.dart' as Ley7; // Importa tu Ley3 aquí
+import 'package:prueba/ley4.dart' as Ley4; // Importa tu Ley4 aquí
+import 'package:prueba/ley5.dart' as Ley5; // Importa tu Ley5 aquí
+import 'package:prueba/ley6.dart' as Ley6; // Importa tu Ley6 aquí
+import 'package:prueba/ley7.dart' as Ley7; // Importa tu Ley7 aquí
 import 'package:prueba/create_law.dart';
-import 'package:prueba/leyes_votadas.dart' as LeyesVotadas;
+import 'package:prueba/leyes_votadas.dart';
 import 'package:prueba/about_us.dart';
 import 'package:prueba/infoLegal.dart' as InformacionLegalPage;
 import 'package:share_plus/share_plus.dart';
@@ -63,6 +63,11 @@ class _HomePageState extends State<HomePage> {
 
   TextEditingController searchController = TextEditingController();
   List<Map<String, String>> filteredLaws = [];
+  List<String> votedLaws = [
+    'Ley de Igualdad de Género',
+    'Ley de Seguridad Cibernética',
+    'Ley de Reforma Educativa'
+  ];
 
   // Mapa que relaciona los títulos de las leyes con sus respectivas pantallas
   final Map<String, Widget> lawPages = {
@@ -128,11 +133,16 @@ class _HomePageState extends State<HomePage> {
               title: Text('Solicitudes Votadas'),
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            LeyesVotadas.LeyesVotadas()),
-                  );              },
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LeyesVotadas(
+                      leyVotadas: votedLaws.map((title) {
+                        return laws.firstWhere((law) => law['title'] == title);
+                      }).toList(),
+                    ),
+                  ),
+                );
+              },
             ),
             ListTile(
               title: Text('Información Legal'),
@@ -140,8 +150,9 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          InformacionLegalPage.InformacionLegalPage()),
+                    builder: (context) =>
+                        InformacionLegalPage.InformacionLegalPage(),
+                  ),
                 );
               },
             ),
