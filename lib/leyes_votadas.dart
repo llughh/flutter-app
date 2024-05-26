@@ -46,7 +46,7 @@ class _LeyesVotadasState extends State<LeyesVotadas> {
         children: <Widget>[
           // Aquí está el buscador
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(9.5),
             child: TextField(
               controller: searchController,
               decoration: InputDecoration(

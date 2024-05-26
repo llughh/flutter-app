@@ -176,7 +176,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               // Aquí puedes agregar tu buscador
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(9.5),
                 child: TextField(
                   controller: searchController,
                   decoration: InputDecoration(
