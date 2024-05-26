@@ -12,16 +12,16 @@ class AboutUsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Home'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-              ),
-            ),
-            SizedBox(height: 20),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.pop(context);
+            //   },
+            //   child: Text('Home'),
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.green,
+            //   ),
+            // ),
+            // SizedBox(height: 20),
             Text(
               'About US',
               style: TextStyle(
