@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:prueba/login_page.dart'; // Asegúrate de tener importado el archivo login_page.dart aquí
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "208058583398",
+    "project_id": "ddirectaui",
+    "storage_bucket": "ddirectaui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208058583398:android:e300cb6186f1f11063e0a7",
+        "android_client_info": {
+          "package_name": "com.example.prueba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA69U9sbFSNFgSR15e_g2309NOXL7wbh68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
