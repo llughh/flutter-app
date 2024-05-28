@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:prueba/home_page.dart';
+import 'package:prueba/registro.dart' as RegistroPage; // Asegúrate de importar tu nueva página
 import 'auth_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,6 +16,40 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
   String? _errorMessage;
+
+  @override
+  void initState() {
+    super.initState();
+    Firebase.initializeApp(); // Inicializa Firebase
+  }
+
+  Future<void> _login() async {
+    try {
+      // Buscar en Firestore si el usuario y contraseña coinciden
+      QuerySnapshot result = await FirebaseFirestore.instance
+          .collection('users')
+          .where('nickname', isEqualTo: _userController.text)
+          .where('password', isEqualTo: _passwordController.text)
+          .get();
+      
+      if (result.docs.isNotEmpty) {
+        // Si existe el usuario, navega a HomePage
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      } else {
+        // Si no existe, muestra mensaje de error
+        setState(() {
+          _errorMessage = 'Usuario o contraseña incorrectos';
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'Error de autenticación: $e';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,20 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          try {
-                            final token = await _authService.authenticateWithClave(
-                              _userController.text,
-                              _passwordController.text,
-                            );
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => HomePage(token: token)),
-                            );
-                          } catch (e) {
-                            setState(() {
-                              _errorMessage = 'Error de autenticación: $e';
-                            });
-                          }
+                          await _login();
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -103,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       child: Text(
-                        'Cl@ve',
+                        'Iniciar Sesión',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
@@ -120,9 +144,9 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomePage()), // No se pasa un token
+                          MaterialPageRoute(builder: (context) => RegistroPage.RegistroPage()), // Navega a la página de registro
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -135,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       child: Text(
-                        'Datos Personales',
+                        'Registra Datos Personales',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
