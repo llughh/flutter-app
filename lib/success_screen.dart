@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba/home_page.dart';
 
 class SuccessScreen extends StatelessWidget {
   @override
@@ -6,6 +7,7 @@ class SuccessScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ley Creada con Éxito'),
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -54,7 +56,12 @@ class SuccessScreen extends StatelessWidget {
             SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          HomePage()), // Navega a la página de registro
+                );
               },
               child: Text('Volver'),
               style: ElevatedButton.styleFrom(

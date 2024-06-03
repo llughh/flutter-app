@@ -37,15 +37,15 @@ class _CreateLawPageState extends State<CreateLawPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Home'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                  ),
-                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                //   child: Text('Home'),
+                //   style: ElevatedButton.styleFrom(
+                //     backgroundColor: Colors.green,
+                //   ),
+                // ),
                 Center(
                   child: Text(
                     'Propuestas de Ley',
